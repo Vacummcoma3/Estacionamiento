@@ -13,3 +13,7 @@ private double CalculartarifaalcularTarifa(String tipo, long minutos) {
     }
     return tarifaPorMinuto * minutos;
 }
+private String formatearTarifa(double tarifa) {
+    DecimalFormat df = new DecimalFormat("#.#####");
+    return df.format(tarifa);
+}

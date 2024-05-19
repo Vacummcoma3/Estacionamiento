@@ -1,0 +1,44 @@
+/*este es el codigo que untilice para crear mi basa de datos en mysql 
+
+
+CREATE DATABASE IF NOT EXISTS estacionamiento;
+USE estacionamiento;
+
+
+CREATE TABLE IF NOT EXISTS vehiculo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    placa VARCHAR(10) UNIQUE NOT NULL,
+    tipo ENUM('auto', 'moto', 'camioneta') NOT NULL,
+    propietario VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS espacio_estacionamiento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    placa VARCHAR(10),
+    ocupado BOOLEAN NOT NULL DEFAULT 0,
+    FOREIGN KEY (placa) REFERENCES vehiculo(placa) ON DELETE SET NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS registro (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehiculo_id INT NOT NULL,
+    entrada TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    salida TIMESTAMP NULL,
+    tarifa DECIMAL(10, 2),
+    FOREIGN KEY (vehiculo_id) REFERENCES vehiculo(id) ON DELETE CASCADE
+);
+
+-- Indexes para mejorar las consultas
+CREATE INDEX idx_vehiculo_placa ON vehiculo (placa);
+CREATE INDEX idx_registro_vehiculo_id ON registro (vehiculo_id);
+CREATE INDEX idx_espacio_estacionamiento_placa ON espacio_estacionamiento (placa);
+
+-- Insertar espacios de estacionamiento
+INSERT INTO espacio_estacionamiento (ocupado) VALUES (0), (0), (0), (0), (0), (0), (0), (0), (0), (0),
+                                                     (0), (0), (0), (0), (0), (0), (0), (0), (0), (0),
+                                                     (0), (0), (0), (0), (0), (0);
+
+
+*/

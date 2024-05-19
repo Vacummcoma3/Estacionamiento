@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 public class EstacionamientoGUI extends JFrame {
@@ -262,7 +261,10 @@ public class EstacionamientoGUI extends JFrame {
                 break;
         }
         return tarifaPorMinuto * minutos;
-    }
+        // Redondear el resultado a 5 números decimales
+        
+        }
+
     private void cargarVehiculosEnEstacionamiento() {
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "SELECT v.placa FROM vehiculo v JOIN registro r ON v.id = r.vehiculo_id WHERE r.salida IS NULL";

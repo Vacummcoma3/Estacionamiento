@@ -1,0 +1,15 @@
+private double CalculartarifaalcularTarifa(String tipo, long minutos) {
+    double tarifaPorMinuto = 0.0;
+    switch (tipo) {
+        case "auto":
+            tarifaPorMinuto = 0.05;
+            break;
+        case "moto":
+            tarifaPorMinuto = 0.02;
+            break;
+        case "camioneta":
+            tarifaPorMinuto = 0.08;
+            break;
+    }
+    return tarifaPorMinuto * minutos;
+}
